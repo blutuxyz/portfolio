@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<script>
+  // Theme before first paint, so nobody sees the wrong one flash.
+  (function () {
+    var d = document.documentElement, t = null;
+    d.classList.add('js');
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    d.dataset.theme = t;
+  })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Valentino Clementi (blutu): Software, Self-Hosting, Hardware</title>
+<meta name="description" content="Portfolio von Valentino Clementi aus Tirol: Apollo, Vantage, Daybreak, Copperplate, WalkOff, ein ESP32-Steuergerät für einen Gokart und TrackPegs.">
+<meta name="theme-color" content="#F2F3F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D1220" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://me.vaule.cloud/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Valentino Clementi (blutu)">
+<meta property="og:description" content="Software, Self-Hosting und Hardware aus Tirol.">
+<meta property="og:url" content="https://me.vaule.cloud/">
+<meta property="og:type" content="website">
+</head>
+<body>
+
+<a class="skip" href="#inhalt" data-i18n="skip">Zum Inhalt springen</a>
+<div class="sc-grain" aria-hidden="true"></div>
+
+<a class="mark" href="#start" aria-label="Zum Anfang" data-i18n-aria="home">blutu</a>
+
+<!-- Dock: where you are (in that project's colour), contents, language, theme. -->
+<nav class="dock" id="dock" aria-label="Navigation">
+  <div class="dock-index" id="dock-index" hidden>
+    <p class="dock-index-h" data-i18n="dock.index">Inhalt</p>
+    <ol>
+      <li><a href="#start" data-hue="start"><i></i><span data-sec-name="start">Start</span></a></li>
+      <li><a href="#work" data-go="0" data-hue="apollo"><i></i><span>Apollo</span></a></li>
+      <li><a href="#work" data-go="1" data-hue="vantage"><i></i><span>Vantage</span></a></li>
+      <li><a href="#work" data-go="2" data-hue="daybreak"><i></i><span>Daybreak</span></a></li>
+      <li><a href="#work" data-go="3" data-hue="copperplate"><i></i><span>Copperplate</span></a></li>
+      <li><a href="#work" data-go="4" data-hue="walkoff"><i></i><span>WalkOff</span></a></li>
+      <li><a href="#work" data-go="5" data-hue="ecu"><i></i><span data-proj-name="ecu">Gokart-ECU</span></a></li>
+      <li><a href="#work" data-go="6" data-hue="trackpegs"><i></i><span>TrackPegs</span></a></li>
+      <li><a href="#skills" data-hue="start"><i></i><span data-sec-name="skills">Skills</span></a></li>
+      <li><a href="#tal" data-hue="start"><i></i><span data-sec-name="tal">Links</span></a></li>
+    </ol>
+  </div>
+
+  <button class="dock-sec" id="dock-btn" type="button" aria-expanded="false" aria-controls="dock-index"
+          aria-label="Inhaltsverzeichnis öffnen">
+    <i class="dock-dot" id="dock-dot"></i>
+    <span class="dock-title" id="dock-title">Start</span>
+    <svg class="dock-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 7.5 6 4.5 9 7.5" /></svg>
+  </button>
+  <span class="dock-sep" aria-hidden="true"></span>
+  <div class="dock-lang" role="group" aria-label="Sprache wählen" data-i18n-aria="dock.lang">
+    <button type="button" data-lang="de" aria-pressed="true" lang="de">DE</button>
+    <button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
+  </div>
+  <span class="dock-sep" aria-hidden="true"></span>
+  <button class="theme-btn" id="theme-btn" type="button" aria-label="Zu dunklem Design wechseln">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <mask id="tb-moon">
+        <rect x="0" y="0" width="24" height="24" fill="#fff" />
+        <circle class="tb-bite" cx="24" cy="2" r="7" fill="#000" />
+      </mask>
+      <circle class="tb-core" cx="12" cy="12" r="5" mask="url(#tb-moon)" />
+      <g class="tb-rays">
+        <path d="M12 1.8v2.4M12 19.8v2.4M1.8 12h2.4M19.8 12h2.4M4.8 4.8l1.7 1.7M17.5 17.5l1.7 1.7M4.8 19.2l1.7-1.7M17.5 6.5l1.7-1.7" />
+      </g>
+    </svg>
+  </button>
+</nav>
+
+<main id="inhalt">
+
+  <!-- ================================================================ Start
+       Sky, clouds, far ridge, mid ridge, name, near ridge. The near ridge
+       overtakes the name and becomes the page. -->
+  <section id="start" data-sec="0" data-sc-act="pin" data-sc-span="1.4">
+    <div data-sc-stage class="hero">
+      <div class="sky" aria-hidden="true">
+        <div class="stars">
+          <i style="--x:8%;--y:14%;--s:2px"></i><i style="--x:17%;--y:30%;--s:1px"></i><i style="--x:26%;--y:9%;--s:1.5px"></i>
+          <i style="--x:34%;--y:22%;--s:1px"></i><i style="--x:44%;--y:6%;--s:2px"></i><i style="--x:52%;--y:27%;--s:1px"></i>
+          <i style="--x:61%;--y:12%;--s:1.5px"></i><i style="--x:69%;--y:33%;--s:1px"></i><i style="--x:77%;--y:8%;--s:2px"></i>
+          <i style="--x:85%;--y:24%;--s:1px"></i><i style="--x:92%;--y:15%;--s:1.5px"></i><i style="--x:12%;--y:42%;--s:1px"></i>
+          <i style="--x:39%;--y:38%;--s:1px"></i><i style="--x:58%;--y:41%;--s:1.5px"></i><i style="--x:73%;--y:19%;--s:1px"></i>
+          <i style="--x:88%;--y:38%;--s:1px"></i><i style="--x:4%;--y:28%;--s:1px"></i><i style="--x:96%;--y:5%;--s:1px"></i>
+        </div>
+        <div class="orb"><span class="orb-sun"></span><span class="orb-moon"></span></div>
+        <div class="clouds">
+          <svg class="cloud cl-1" viewBox="0 0 220 70"><path d="M24 62 C6 62 4 40 22 38 C22 20 46 14 58 26 C66 6 104 2 114 26 C126 14 152 18 154 38 C176 34 190 48 184 62 Z" /></svg>
+          <svg class="cloud cl-2" viewBox="0 0 220 70"><path d="M20 62 C4 60 6 44 20 42 C24 28 44 26 52 34 C62 14 94 14 102 32 C116 22 140 28 140 44 C156 42 164 54 158 62 Z" /></svg>
+          <svg class="cloud cl-3" viewBox="0 0 220 70"><path d="M24 62 C6 62 4 40 22 38 C22 20 46 14 58 26 C66 6 104 2 114 26 C126 14 152 18 154 38 C176 34 190 48 184 62 Z" /></svg>
+        </div>
+      </div>
+
+      <svg class="ridge ridge-far" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+        <path d="M0 520 L80 482 L150 498 L240 436 L300 462 L360 448 L420 402 L470 430 L520 452 L600 418 L660 384 L700 362 L760 410 L800 428 L880 392 L960 438 L1040 384 L1100 400 L1150 418 L1240 350 L1300 388 L1340 404 L1420 376 L1500 420 L1600 396 V900 H0 Z" />
+      </svg>
+      <svg class="ridge ridge-mid" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+        <path d="M0 610 L70 584 L130 596 L210 540 L260 556 L330 512 L380 530 L440 560 L520 548 L600 520 L640 532 L720 586 L800 508 L850 528 L920 494 L980 470 L1040 512 L1100 540 L1170 504 L1230 520 L1270 548 L1350 512 L1420 540 L1500 576 L1600 548 V900 H0 Z" />
+        <path class="snow" d="M330 512 L352 520 L344 534 L364 528 L380 530 L362 516 Z M980 470 L1004 484 L992 496 L1014 492 L1040 512 L1010 486 Z M800 508 L816 520 L808 530 L826 524 L850 528 L826 514 Z" />
+      </svg>
+
+      <div class="hero-name-block">
+        <h1 class="hero-name"><span>Valentino</span> <span>Clementi</span></h1>
+        <p class="hero-aka" aria-hidden="true" data-i18n="hero.aka">auch blutu</p>
+      </div>
+
+      <div class="ridge-near-wrap">
+        <svg class="ridge ridge-near" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" role="img" aria-labelledby="ridge-t">
+          <title id="ridge-t" data-i18n="hero.sr">Tiroler Berggrate</title>
+          <path d="M0 708 L110 660 L190 686 L270 600 L310 540 L350 566 L410 620 L470 652 L560 634 L640 688 L760 672 L860 716 L980 664 L1080 690 L1180 640 L1260 612 L1330 650 L1440 626 L1600 664 V2000 H0 Z" />
+        </svg>
+        <p class="hero-lede" data-i18n="hero.lede">Entwickler und Maker aus Tirol. Software, Self-Hosting und Hardware, vom Minecraft-Anticheat bis zum Gokart-Steuergerät.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ Statement
+       One sentence, inked word by word as you read it. -->
+  <section class="statement-wrap" data-sc-act="flow">
+    <p class="statement" id="statement" data-i18n="statement">Software, Self-Hosting und Hardware. Ich baue Anticheats für Minecraft, Apps für Stundenpläne und Notizen und Hardware mit ESP32 und 3D-Druck.</p>
+  </section>
+
+  <!-- ============================================================= Projects
+       One pinned room. The index on the left, the text in the middle, and a
+       window on the right: a small landscape in the project's colour whose
+       ridges reshape as you move from project to project. Every project's
+       drawing has its own motion. -->
+  <section id="work" data-sec="1" data-sc-act="pin" data-sc-span="8.4">
+    <div data-sc-stage class="work">
+      <nav class="work-index" aria-labelledby="work-h">
+        <h2 class="work-h" id="work-h" data-i18n="work.h">Projekte</h2>
+        <ol>
+          <li><button type="button" data-go="0" data-hue="apollo"><i></i>Apollo</button></li>
+          <li><button type="button" data-go="1" data-hue="vantage"><i></i>Vantage</button></li>
+          <li><button type="button" data-go="2" data-hue="daybreak"><i></i>Daybreak</button></li>
+          <li><button type="button" data-go="3" data-hue="copperplate"><i></i>Copperplate</button></li>
+          <li><button type="button" data-go="4" data-hue="walkoff"><i></i>WalkOff</button></li>
+          <li><button type="button" data-go="5" data-hue="ecu"><i></i><span data-proj-name="ecu">Gokart-ECU</span></button></li>
+          <li><button type="button" data-go="6" data-hue="trackpegs"><i></i>TrackPegs</button></li>
+        </ol>
+      </nav>
+
+      <div class="work-texts">
+        <article class="wt c-apollo">
+          <h3 class="wt-h">Apollo</h3>
+          <p class="wt-ctx" data-i18n="apollo.context">Anticheat für das Frolic-Netzwerk</p>
+          <p class="wt-body" data-i18n="apollo.body">Statt auf bekannte Cheats zu reagieren, rechnet Apollo aus dem Spielzustand voraus, welche Bewegung als Nächstes möglich ist, und vergleicht das mit dem, was der Client meldet. Was außerhalb der Toleranz landet, fällt auf.</p>
+          <dl class="wt-facts">
+            <div><dt data-i18n="f.platform">Plattform</dt><dd data-i18n="v.minecraft">Minecraft-Server</dd></div>
+            <div><dt data-i18n="f.approach">Ansatz</dt><dd data-i18n="v.prediction">Vorhersage statt Signaturen</dd></div>
+          </dl>
+        </article>
+        <article class="wt c-vantage">
+          <h3 class="wt-h">Vantage</h3>
+          <p class="wt-ctx" data-i18n="vantage.context">Cheater-Datenbank für Frolic</p>
+          <p class="wt-body" data-i18n="vantage.body">Eine Datenbank für Bedwars-Cheater. Alle Einträge liegen an einer Stelle und sind von drei Seiten erreichbar: über einen Discord-Bot, ein Web-Interface und eine Forge-Mod direkt im Spiel.</p>
+          <dl class="wt-facts">
+            <div><dt data-i18n="f.access">Zugänge</dt><dd data-i18n="v.access">Discord, Web, Forge-Mod</dd></div>
+            <div><dt data-i18n="f.focus">Fokus</dt><dd>Bedwars</dd></div>
+          </dl>
+        </article>
+        <article class="wt c-daybreak">
+          <h3 class="wt-h">Daybreak</h3>
+          <p class="wt-ctx" data-i18n="daybreak.context">Stundenplan-App</p>
+          <p class="wt-body" data-i18n="daybreak.body">Eine Alternative zu WebUntis: der Stundenplan als native Android-App, gestaltet mit Material 3 Expressive.</p>
+          <dl class="wt-facts">
+            <div><dt data-i18n="f.platform">Plattform</dt><dd data-i18n="v.android">Android, nativ</dd></div>
+            <div><dt data-i18n="f.design">Design</dt><dd>Material 3 Expressive</dd></div>
+          </dl>
+        </article>
+        <article class="wt c-copperplate">
+          <h3 class="wt-h">Copperplate</h3>
+          <p class="wt-ctx" data-i18n="copperplate.context">Notiz-App</p>
+          <p class="wt-body" data-i18n="copperplate.body">Eine Alternative zu Goodnotes zum Schreiben und Zeichnen. Aufgebaut als Monorepo, zuerst fürs Web.</p>
+          <dl class="wt-facts">
+            <div><dt data-i18n="f.platform">Plattform</dt><dd data-i18n="v.webfirst">Zuerst Web</dd></div>
+            <div><dt data-i18n="f.structure">Aufbau</dt><dd>Monorepo</dd></div>
+          </dl>
+        </article>
+        <article class="wt c-walkoff">
+          <h3 class="wt-h">WalkOff</h3>
+          <p class="wt-ctx" data-i18n="walkoff.context">Mobile-App mit Backend</p>
+          <p class="wt-body" data-i18n="walkoff.body">Eine Mobile-App mit Expo und React Native, dazu ein eigenes API-Backend.</p>
+          <dl class="wt-facts">
+            <div><dt data-i18n="f.tech">Technik</dt><dd>Expo, React Native</dd></div>
+            <div><dt data-i18n="f.backend">Backend</dt><dd data-i18n="v.ownapi">Eigene API</dd></div>
+          </dl>
+        </article>
+        <article class="wt c-ecu">
+          <h3 class="wt-h" data-proj-name="ecu">Gokart-ECU</h3>
+          <p class="wt-ctx" data-i18n="ecu.context">Hardware: eigenes Steuergerät</p>
+          <p class="wt-body" data-i18n="ecu.body">Ein selbst gebauter Gokart mit eigenem Steuergerät. Die ECU läuft auf einem ESP32 und sitzt zwischen Bedienung und Antrieb.</p>
+          <dl class="wt-facts">
+            <div><dt data-i18n="f.controller">Controller</dt><dd>ESP32</dd></div>
+            <div><dt data-i18n="f.vehicle">Fahrzeug</dt><dd data-i18n="v.kart">Gokart, selbst gebaut</dd></div>
+          </dl>
+        </article>
+        <article class="wt c-trackpegs">
+          <h3 class="wt-h">TrackPegs</h3>
+          <p class="wt-ctx" data-i18n="peg.context">Hardware: 3D-Druck</p>
+          <p class="wt-body" data-i18n="peg.body">Stuntpegs aus dem 3D-Drucker, mit eingebautem Tracker. Von außen ein Peg, aufgeschnitten ein Gehäuse.</p>
+          <ol class="wt-legend">
+            <li><span class="n">1</span><span data-i18n="peg.l1">Pegkörper, 3D-gedruckt</span></li>
+            <li><span class="n n--hot">2</span><span data-i18n="peg.l2">Tracker</span></li>
+            <li><span class="n">3</span><span data-i18n="peg.l3">Abschluss</span></li>
+          </ol>
+        </article>
+      </div>
+
+      <div class="work-stage" aria-hidden="true">
+        <svg class="stage-ridges" viewBox="0 0 1000 300" preserveAspectRatio="none">
+          <path class="sr-back" d="M0 300 V200 H1000 V300 Z" />
+          <path class="sr-front" d="M0 300 V240 H1000 V300 Z" />
+        </svg>
+
+        <!-- Apollo -->
+        <div class="art art-apollo c-apollo">
+          <svg viewBox="0 0 640 440">
+            <defs>
+              <mask id="ap-mask" maskUnits="userSpaceOnUse">
+                <path d="M60 360 C 220 350 330 250 580 110" pathLength="1" data-draw="0.08 0.34" stroke="#fff" stroke-width="8" fill="none" />
+              </mask>
+            </defs>
+            <path class="ap-band" d="M60 360 C 220 350 330 250 580 110" pathLength="1" data-draw="0.04 0.3" />
+            <path class="d-hue ap-pred" d="M60 360 C 220 350 330 250 580 110" mask="url(#ap-mask)" />
+            <path class="d-ink ap-rep" d="M60 360 C 200 352 290 268 372 222 L 470 74" pathLength="1" data-draw="0.3 0.62" />
+            <g class="d-ink-fill">
+              <circle cx="60" cy="360" r="7" />
+              <circle cx="152" cy="346" r="4" data-show="0.34 0.37" />
+              <circle cx="244" cy="306" r="4" data-show="0.4 0.43" />
+              <circle cx="330" cy="250" r="4" data-show="0.46 0.49" />
+              <circle cx="420" cy="148" r="4" data-show="0.55 0.58" />
+            </g>
+            <circle class="ap-hit" cx="470" cy="74" r="34" data-show="0.62 0.7" />
+            <path class="d-hue ap-ring" d="M470 36 C 510 38, 516 102, 470 112 C 428 116, 420 48, 474 34" pathLength="1" data-draw="0.62 0.72" />
+            <text class="d-t" x="60" y="396" data-i18n="apollo.d.player">Spieler</text>
+            <text class="d-t d-t-hue" x="592" y="152" text-anchor="end" data-i18n="apollo.d.pred" data-show="0.26 0.32">Vorhersage</text>
+            <text class="d-t" x="236" y="402" data-i18n="apollo.d.tol" data-show="0.2 0.26">Toleranz</text>
+            <text class="d-t" x="414" y="136" text-anchor="end" data-i18n="apollo.d.rep" data-show="0.54 0.6">gemeldet</text>
+            <text class="d-t d-t-hue" x="516" y="66" data-i18n="apollo.d.dev" data-show="0.68 0.74">Abweichung</text>
+          </svg>
+        </div>
+
+        <!-- Vantage -->
+        <div class="art art-vantage c-vantage">
+          <svg viewBox="0 0 640 400">
+            <g data-show="0.02 0.12" data-move="0.02 0.16 0 -10">
+              <g transform="translate(0 10)">
+                <path class="d-ink d-tint" d="M252 168 V 240 C 252 262, 392 262, 392 240 V 168" />
+                <ellipse class="d-ink d-tint-strong" cx="322" cy="168" rx="70" ry="18" />
+                <path class="d-ink-thin" d="M252 192 C 252 214, 392 214, 392 192 M252 216 C 252 238, 392 238, 392 216" />
+                <text class="d-t d-t-strong" x="322" y="292" text-anchor="middle" data-i18n="vantage.d.db">Datenbank</text>
+              </g>
+            </g>
+            <g data-show="0.1 0.2">
+              <rect class="d-ink d-card" x="30" y="168" width="160" height="64" rx="12" />
+              <text class="d-t d-t-strong" x="48" y="196" data-i18n="vantage.d.mod">Forge-Mod</text>
+              <text class="d-t" x="48" y="218" data-i18n="vantage.d.modSub">im Spiel</text>
+            </g>
+            <g data-show="0.15 0.25">
+              <rect class="d-ink d-card" x="450" y="58" width="160" height="64" rx="12" />
+              <text class="d-t d-t-strong" x="468" y="86" data-i18n="vantage.d.bot">Discord-Bot</text>
+              <text class="d-t" x="468" y="108" data-i18n="vantage.d.botSub">auf Discord</text>
+            </g>
+            <g data-show="0.2 0.3">
+              <rect class="d-ink d-card" x="450" y="278" width="160" height="64" rx="12" />
+              <text class="d-t d-t-strong" x="468" y="306" data-i18n="vantage.d.web">Web-Interface</text>
+              <text class="d-t" x="468" y="328" data-i18n="vantage.d.webSub">im Browser</text>
+            </g>
+            <path class="d-hue" pathLength="1" data-draw="0.32 0.46" d="M190 200 H 244" />
+            <path class="d-hue" pathLength="1" data-draw="0.38 0.54" d="M450 90 H 400 Q 372 90 372 118 V 150" />
+            <path class="d-hue" pathLength="1" data-draw="0.44 0.6" d="M450 310 H 400 Q 372 310 372 282 V 258" />
+            <g class="d-hue-head">
+              <path d="M236 193 L244 200 L236 207 M198 193 L190 200 L198 207" data-show="0.44 0.48" />
+              <path d="M365 142 L372 150 L379 142 M442 83 L450 90 L442 97" data-show="0.52 0.56" />
+              <path d="M365 266 L372 258 L379 266 M442 303 L450 310 L442 317" data-show="0.58 0.62" />
+            </g>
+            <circle class="d-hue-fill" cx="196" cy="200" r="5" data-move="0.64 0.8 42 0" data-show="0.63 0.66 0.78 0.81" />
+            <circle class="d-hue-fill" cx="444" cy="90" r="5" data-move="0.7 0.86 -62 0" data-show="0.69 0.72 0.84 0.87" />
+          </svg>
+        </div>
+
+        <!-- Daybreak -->
+        <div class="art art-daybreak c-daybreak">
+          <svg viewBox="0 0 400 300">
+            <circle class="app-sun" cx="300" cy="140" r="44" data-show="0.02 0.14" data-move="0.04 0.6 0 -44" />
+            <rect class="d-card" x="140" y="16" width="120" height="268" rx="24" data-show="0.14 0.28" />
+            <path class="d-ink" pathLength="1" data-draw="0.02 0.26" d="M164 16 H236 A24 24 0 0 1 260 40 V260 A24 24 0 0 1 236 284 H164 A24 24 0 0 1 140 260 V40 A24 24 0 0 1 164 16 Z" />
+            <circle class="d-ink-fill" cx="200" cy="34" r="4" data-show="0.2 0.28" />
+            <g class="app-blocks">
+              <rect x="156" y="66" width="18" height="52" rx="9" data-show="0.3 0.34" data-move="0.3 0.38 0 -12" />
+              <rect x="178" y="66" width="18" height="24" rx="6" data-show="0.33 0.37" data-move="0.33 0.41 0 -12" />
+              <rect x="222" y="94" width="18" height="52" rx="9" data-show="0.36 0.4" data-move="0.36 0.44 0 -12" />
+              <rect x="200" y="122" width="18" height="24" rx="12" data-show="0.39 0.43" data-move="0.39 0.47 0 -12" />
+              <rect x="222" y="150" width="18" height="24" rx="6" data-show="0.42 0.46" data-move="0.42 0.5 0 -12" />
+              <rect x="156" y="178" width="18" height="24" rx="6" data-show="0.45 0.49" data-move="0.45 0.53 0 -12" />
+              <rect x="178" y="150" width="18" height="52" rx="9" data-show="0.48 0.52" data-move="0.48 0.56 0 -12" />
+              <rect x="200" y="206" width="18" height="52" rx="12" data-show="0.51 0.55" data-move="0.51 0.59 0 -12" />
+              <rect x="156" y="234" width="18" height="24" rx="12" data-show="0.54 0.58" data-move="0.54 0.62 0 -12" />
+            </g>
+          </svg>
+        </div>
+
+        <!-- Copperplate -->
+        <div class="art art-copperplate c-copperplate">
+          <svg viewBox="0 0 400 300">
+            <rect class="d-card" x="52" y="44" width="296" height="212" rx="20" data-show="0.12 0.26" />
+            <path class="d-ink" pathLength="1" data-draw="0.02 0.26" d="M72 44 H328 A20 20 0 0 1 348 64 V236 A20 20 0 0 1 328 256 H72 A20 20 0 0 1 52 236 V64 A20 20 0 0 1 72 44 Z" />
+            <path class="d-rule" data-show="0.22 0.32" d="M84 96 H316 M84 124 H316 M84 152 H316 M84 180 H316 M84 208 H316" />
+            <path class="d-hue app-ink" pathLength="1" data-draw="0.32 0.6" d="M116 118 c 8 -22 30 -22 28 -2 c -2 16 -18 20 -14 6 c 6 -16 30 -14 30 2 c 0 14 -10 18 -6 4 c 6 -14 26 -12 28 2 c 2 12 8 10 14 -2 c 6 -12 14 -10 16 0 c 2 10 10 10 16 -2" />
+            <path class="d-hue app-ink" pathLength="1" data-draw="0.6 0.76" d="M116 170 c 20 -6 42 6 62 0 c 18 -6 36 4 54 -2" />
+            <g data-show="0.26 0.34" data-move="0.32 0.78 -36 -26">
+              <g transform="rotate(-38 300 230)">
+                <rect class="d-ink d-hue-fill" x="246" y="224" width="120" height="12" rx="6" />
+                <path class="d-ink" d="M246 230 L 232 230" />
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <!-- WalkOff -->
+        <div class="art art-walkoff c-walkoff">
+          <svg viewBox="0 0 400 300">
+            <rect class="d-card" x="60" y="40" width="112" height="226" rx="22" data-show="0.12 0.26" />
+            <path class="d-ink" pathLength="1" data-draw="0.02 0.26" d="M82 40 H150 A22 22 0 0 1 172 62 V244 A22 22 0 0 1 150 266 H82 A22 22 0 0 1 60 244 V62 A22 22 0 0 1 82 40 Z" />
+            <path class="d-rule" data-show="0.22 0.3" d="M82 92 H150 M82 112 H138 M82 132 H146" />
+            <g data-show="0.18 0.3" data-move="0.18 0.34 0 -10">
+              <g transform="translate(0 10)">
+                <rect class="d-ink d-card" x="262" y="88" width="88" height="128" rx="10" />
+                <path class="d-ink-thin" d="M274 120 H338 M274 152 H338 M274 184 H338" />
+              </g>
+            </g>
+            <circle class="d-hue-fill" cx="330" cy="104" r="4" data-show="0.56 0.6" />
+            <circle class="d-hue-fill" cx="330" cy="136" r="4" data-show="0.72 0.76" />
+            <path class="d-hue" pathLength="1" data-draw="0.32 0.48" d="M172 152 H 262" />
+            <text class="d-t d-t-hue" x="217" y="138" text-anchor="middle" data-show="0.42 0.5">API</text>
+            <circle class="d-hue-fill" cx="176" cy="152" r="5" data-move="0.5 0.64 82 0" data-show="0.49 0.52 0.62 0.65" />
+            <circle class="d-hue-fill" cx="258" cy="152" r="5" data-move="0.64 0.78 -82 0" data-show="0.63 0.66 0.76 0.79" />
+            <circle class="d-hue-fill" cx="176" cy="152" r="5" data-move="0.78 0.92 82 0" data-show="0.77 0.8 0.9 0.93" />
+          </svg>
+        </div>
+
+        <!-- ECU (wide on desktop, tall on phones) -->
+        <div class="art art-ecu c-ecu">
+          <svg class="ecu-d" viewBox="0 0 1000 340">
+            <defs><clipPath id="ecu-cd"><rect x="0" y="-40" width="0" height="440" data-sweep="0.3 0.68 1000" /></clipPath></defs>
+            <g class="ecu-off" data-show="0.02 0.16"><use href="#ecu-geo" /></g>
+            <g class="ecu-on" clip-path="url(#ecu-cd)">
+              <use href="#ecu-geo" />
+              <g class="ecu-live">
+                <path d="M236 80 H 334" /><path d="M546 80 H 644" /><path d="M806 80 H 852" />
+                <path d="M236 270 H 726 V 122" /><path d="M440 270 V 122" />
+              </g>
+              <circle cx="520" cy="58" r="6" class="ecu-led" />
+            </g>
+          </svg>
+          <svg class="ecu-m" viewBox="0 0 400 590">
+            <defs><clipPath id="ecu-cm"><rect x="-20" y="0" width="440" height="0" data-sweep-y="0.3 0.68 600" /></clipPath></defs>
+            <g class="ecu-off" data-show="0.02 0.16"><use href="#ecu-geo-m" /></g>
+            <g class="ecu-on" clip-path="url(#ecu-cm)">
+              <use href="#ecu-geo-m" />
+              <g class="ecu-live">
+                <path d="M140 96 V 160" /><path d="M140 242 V 304" /><path d="M140 386 V 450" />
+                <path d="M300 345 H 250" /><path d="M340 304 V 201 H 250" />
+              </g>
+              <circle cx="228" cy="178" r="6" class="ecu-led" />
+            </g>
+          </svg>
+          <svg width="0" height="0" class="absolute">
+            <defs>
+              <g id="ecu-geo">
+                <rect class="e-box" x="40" y="40" width="196" height="80" rx="14" />
+                <text class="d-t d-t-strong" x="60" y="74" data-i18n="ecu.d.controls">Bedienung</text>
+                <text class="d-t" x="60" y="98" data-i18n="ecu.d.controlsSub">Gas, Bremse</text>
+                <rect class="e-box" x="334" y="40" width="212" height="82" rx="14" />
+                <text class="d-t d-t-strong" x="354" y="74">ECU</text>
+                <text class="d-t" x="354" y="98">ESP32</text>
+                <rect class="e-box" x="644" y="40" width="162" height="82" rx="14" />
+                <text class="d-t d-t-strong" x="664" y="86" data-i18n="ecu.d.power">Leistungsteil</text>
+                <circle class="e-box" cx="896" cy="80" r="44" />
+                <text class="d-t d-t-strong" x="896" y="86" text-anchor="middle" data-i18n="ecu.d.motor">Motor</text>
+                <rect class="e-box" x="40" y="236" width="196" height="68" rx="14" />
+                <text class="d-t d-t-strong" x="60" y="276" data-i18n="ecu.d.battery">Akku</text>
+                <path class="e-wire" d="M236 80 H 334 M546 80 H 644 M806 80 H 852 M236 270 H 726 V 122 M440 270 V 122" />
+                <circle class="e-node" cx="440" cy="270" r="4.5" />
+              </g>
+              <g id="ecu-geo-m">
+                <rect class="e-box" x="30" y="20" width="220" height="76" rx="14" />
+                <text class="d-t d-t-strong" x="50" y="52" data-i18n="ecu.d.controls">Bedienung</text>
+                <text class="d-t" x="50" y="80" data-i18n="ecu.d.controlsSub">Gas, Bremse</text>
+                <rect class="e-box" x="30" y="160" width="220" height="82" rx="14" />
+                <text class="d-t d-t-strong" x="50" y="194">ECU</text>
+                <text class="d-t" x="50" y="222">ESP32</text>
+                <rect class="e-box" x="30" y="304" width="220" height="82" rx="14" />
+                <text class="d-t d-t-strong" x="50" y="351" data-i18n="ecu.d.power">Leistungsteil</text>
+                <circle class="e-box" cx="140" cy="510" r="60" />
+                <text class="d-t d-t-strong" x="140" y="516" text-anchor="middle" data-i18n="ecu.d.motor">Motor</text>
+                <rect class="e-box" x="300" y="304" width="86" height="82" rx="14" />
+                <text class="d-t d-t-strong" x="343" y="351" text-anchor="middle" data-i18n="ecu.d.battery">Akku</text>
+                <path class="e-wire" d="M140 96 V 160 M140 242 V 304 M140 386 V 450 M300 345 H 250 M340 304 V 201 H 250" />
+              </g>
+            </defs>
+          </svg>
+        </div>
+
+        <!-- TrackPegs: the peak. The window turns cobalt. -->
+        <div class="art art-peg c-trackpegs">
+          <svg class="peg-draw" viewBox="-310 -290 770 480">
+            <defs>
+              <pattern id="pk-hatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <path d="M0 0 V9" class="pk-hatch-line" />
+              </pattern>
+              <pattern id="pk-hatch2" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+                <path d="M0 0 V9" class="pk-hatch-line" />
+              </pattern>
+              <pattern id="pk-knurl" width="12" height="28" patternUnits="userSpaceOnUse">
+                <path d="M6 0 V28" class="pk-thin" />
+              </pattern>
+              <clipPath id="pk-sweep"><rect x="-240" y="-270" width="0" height="540" data-sweep="0.3 0.52 470" /></clipPath>
+            </defs>
+            <path class="pk-axis" d="M-500 0 H500" data-show="0 0.06" />
+            <g data-move="0.56 0.8 -50 0">
+              <path class="pk-body" d="M-210 -70 H190 L200 -60 V60 L190 70 H-210 L-220 60 V-60 Z" data-show="0.1 0.28" />
+              <path class="pk-ln" pathLength="1" data-draw="0.03 0.26" d="M-210 -70 H190 L200 -60 V60 L190 70 H-210 L-220 60 V-60 Z" />
+              <path class="pk-thin" pathLength="1" data-draw="0.15 0.28" d="M-210 -70 V70 M190 -70 V70" />
+              <g data-show="0.2 0.32">
+                <path class="pk-hidden" d="M-220 30 H200" />
+                <rect x="-190" y="42" width="280" height="26" fill="url(#pk-knurl)" />
+              </g>
+              <g clip-path="url(#pk-sweep)">
+                <path fill="url(#pk-hatch)" fill-rule="evenodd" d="M-210 -70 H190 L200 -60 V-30 H-220 V-60 Z M110 -62 H190 V-38 H110 Z" />
+                <path class="pk-ln" d="M-220 -30 H200 M110 -62 H190 V-38 H110 Z" />
+                <g data-move="0.6 0.82 120 -150">
+                  <rect class="pk-part" x="118" y="-58" width="64" height="16" rx="4" />
+                  <rect class="pk-chip" x="141" y="-55" width="14" height="10" rx="2" />
+                </g>
+              </g>
+            </g>
+            <g data-move="0.58 0.82 160 0">
+              <path class="pk-body" d="M200 -66 H222 V66 H200 Z" data-show="0.18 0.3" />
+              <path class="pk-ln" pathLength="1" data-draw="0.18 0.3" d="M200 -66 H222 V66 H200 Z" />
+              <g clip-path="url(#pk-sweep)">
+                <rect x="200" y="-66" width="22" height="36" fill="url(#pk-hatch2)" />
+                <path class="pk-ln" d="M200 -30 H222" />
+              </g>
+            </g>
+            <g data-move="0.3 0.52 470 0" data-show="0.28 0.32 0.5 0.56">
+              <path class="pk-plane" d="M-230 -118 V118" />
+            </g>
+            <g data-show="0.78 0.88">
+              <path class="pk-thin" d="M-150 -72 L-188 -150" /><circle class="pk-bubble" cx="-198" cy="-172" r="22" /><text class="pk-n" x="-198" y="-164" text-anchor="middle">1</text>
+              <path class="pk-thin" d="M236 -210 L262 -232" /><circle class="pk-bubble pk-bubble--hot" cx="282" cy="-246" r="22" /><text class="pk-n pk-n--hot" x="282" y="-238" text-anchor="middle">2</text>
+              <path class="pk-thin" d="M378 60 L404 124" /><circle class="pk-bubble" cx="412" cy="148" r="22" /><text class="pk-n" x="412" y="156" text-anchor="middle">3</text>
+            </g>
+          </svg>
+        </div>
+
+        <p class="art-note" data-i18n="art.note">Vereinfachte Darstellung</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ Skills -->
+  <section id="skills" class="skills" data-sec="2" data-sc-act="flow">
+    <div class="skills-wrap">
+      <h2 class="t-h2" data-sc-in data-i18n="skills.h">Werkzeugkiste</h2>
+      <ul class="legend" data-sc-in data-sc-stagger="50">
+        <li class="g-fe" data-i18n="g.fe">Frontend und Mobile</li>
+        <li class="g-be" data-i18n="g.be">Backend und Infrastruktur</li>
+        <li class="g-hw" data-i18n="g.hw">Hardware</li>
+      </ul>
+      <ul class="tags" data-sc-in data-sc-stagger="30">
+        <li class="tag g-fe">React Native</li><li class="tag g-fe">Expo</li><li class="tag g-fe">Android (Material 3)</li>
+        <li class="tag g-be">APIs</li><li class="tag g-be">Linux</li><li class="tag g-be">Nginx</li><li class="tag g-be">Cloudflare</li>
+        <li class="tag g-be">Docker</li><li class="tag g-be">Coolify</li><li class="tag g-be">Dokploy</li>
+        <li class="tag g-hw">ESP32</li><li class="tag g-hw" data-i18n="i.elec">Elektronik</li><li class="tag g-hw" data-i18n="i.print">3D-Druck</li><li class="tag g-hw">CAD</li>
+      </ul>
+      <div class="side" data-sc-in data-sc-stagger="60">
+        <h3 class="side-h" data-i18n="side.h">Außerdem</h3>
+        <div class="side-item"><p class="side-name" data-i18n="side.adb">ADB- und Fastboot-Tool</p><p class="side-p" data-i18n="side.adbP">Ein Werkzeug für die Arbeit mit Android-Geräten über ADB und Fastboot.</p></div>
+        <div class="side-item"><p class="side-name" data-i18n="side.inst">Installer für Programmiersprachen</p><p class="side-p" data-i18n="side.instP">Eine App, die Programmiersprachen installiert.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ Valley
+       The bookend: back among the mountains. The ridges rise into place as
+       you arrive, and the page ends standing on the near one. -->
+  <section id="tal" class="valley" data-sec="3" data-sc-act="flow">
+    <div class="valley-sky" aria-hidden="true">
+      <div class="stars">
+        <i style="--x:12%;--y:18%;--s:1.5px"></i><i style="--x:23%;--y:8%;--s:1px"></i><i style="--x:36%;--y:26%;--s:2px"></i>
+        <i style="--x:48%;--y:12%;--s:1px"></i><i style="--x:63%;--y:22%;--s:1.5px"></i><i style="--x:71%;--y:6%;--s:1px"></i>
+        <i style="--x:82%;--y:30%;--s:1px"></i><i style="--x:91%;--y:14%;--s:2px"></i><i style="--x:6%;--y:34%;--s:1px"></i>
+      </div>
+      <div class="orb orb--valley"><span class="orb-sun"></span><span class="orb-moon"></span></div>
+    </div>
+    <div class="valley-copy">
+      <h2 class="close-h" data-sc-in data-i18n="close.h">Mehr davon liegt auf GitHub.</h2>
+      <div class="close-act" data-sc-in>
+        <a class="btn" href="https://github.com/blutuxyz" rel="noopener">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          <span data-i18n="cta">GitHub öffnen</span>
+        </a>
+        <span class="close-handle">github.com/blutuxyz</span>
+      </div>
+    </div>
+    <div class="valley-land" aria-hidden="true">
+      <svg class="ridge v-far" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMax slice">
+        <path d="M0 260 L110 210 L190 236 L300 150 L380 196 L470 120 L560 170 L650 140 L760 80 L850 150 L960 110 L1060 170 L1150 120 L1260 60 L1360 130 L1460 96 L1600 150 V600 H0 Z" />
+      </svg>
+      <svg class="ridge v-mid" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMax slice">
+        <path d="M0 350 L90 310 L180 336 L260 270 L330 300 L420 240 L500 290 L600 262 L680 316 L780 230 L860 270 L960 210 L1040 262 L1120 296 L1220 240 L1300 270 L1400 228 L1500 300 L1600 270 V600 H0 Z" />
+        <path class="snow" d="M420 240 L444 252 L434 264 L456 260 L470 268 L446 248 Z M960 210 L984 224 L972 236 L996 232 L1010 240 L986 222 Z" />
+      </svg>
+      <div class="v-near">
+        <svg class="ridge" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMax slice">
+          <path d="M0 450 L120 410 L210 436 L320 380 L400 400 L520 360 L620 420 L740 400 L860 440 L980 390 L1100 420 L1220 370 L1320 400 L1440 380 L1600 420 V1400 H0 Z" />
+        </svg>
+        <footer class="foot">
+          <p data-i18n="foot">© 2026 Valentino Clementi, Tirol.</p>
+          <p data-i18n="close.web">Diese Seite läuft auf me.vaule.cloud.</p>
+        </footer>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

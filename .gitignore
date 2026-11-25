@@ -1,0 +1,8 @@
+node_modules
+dist
+scrollcraft/node_modules
+scrollcraft/lab
+scrollcraft/builds/*/lab
+.claude/
+*.log
+.DS_Store
